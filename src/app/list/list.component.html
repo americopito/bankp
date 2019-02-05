@@ -1,0 +1,150 @@
+<!--
+<div class="card" class="col-12 col-md-6"  style="width: 18rem;" *ngFor="let l of list">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{l.name}}</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>  
+--> 
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!-- Team -->
+
+<!--<nav class="navbar navbar-light bg-light ">
+        
+    <ul>
+                <li>HOME</li>
+                <li>FAVORITE</li>
+            </ul>
+        
+            <form class="form-inline">
+              <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </nav>
+   
+        -->
+   <nav class="bg-warning">
+        <div class="container color">
+            <div class="row">
+                <div class="col-12">
+                        <div class="float-right">
+                        <a  href="" >HOME</a>   &nbsp; FAVORITE</div>
+                        
+                </div>
+            </div>
+                <div class="row">
+                <div class="col-12 text-center">
+                        <h4>The Beer Bank</h4>
+                        <p style="font-size: 11px">find your favorite beer here</p>
+                                    
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-12">
+                        
+                                               <div class="form-group ">
+                                    
+                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Search for beer name">
+                                
+                                  </div>                    
+                               
+                            </div>
+                </div>
+                            
+          </div>
+     
+        </nav>
+<section id="team" class="pb-5">
+    <div class="container">
+            
+        <div class="row">
+            <!-- Team member -->
+            <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let l of list" id={{l.id}} >
+                
+                    
+                        <div class="frontside">
+                            <div class="card" (click)="open(content,l.id)">
+                                <div class="card-body text-center">
+                                        <div class="pull-right"><i class="fa fa-star-o"></i></div>
+                                    <p><img class=" img-fluid" src="{{l.image_url}}" alt="card image"></p>
+                                    <h4 class="card-title">{{l.name}}</h4>
+                                    <p class="card-text">{{l.tagline}}</p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                    
+                
+            </div>
+          
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ng-template #content let-c="close" let-d="dismiss"   >
+    <div class="modal-header"  >
+      
+      
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body" *ngFor="let b of beer">
+        <div class="row">
+            <div class="col-4">
+                <img src={{b.image_url}} alt="">
+            </div>
+            <div class="col-8">
+                <h4 class="ctitle">{{b.name}}</h4>
+                <p >{{b.tagline}}</p>
+                <p> <b>IBU: </b>{{b.ibu}} &nbsp;   <b>ABV: </b>{{b.abv}} &nbsp; <b> EBC: </b>{{b.ebc}} </p>
+                <p class="des text-justify" >{{b.description}}</p>
+                <h6>best served with:</h6>
+                <ul  class="des" *ngFor="let bi of b.food_pairing">
+                    
+                    <li>{{bi}}</li> 
+             </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div></div>
+                
+            <div class="col-xs-12 col-sm-6 col-md-4 mx-auto" *ngFor="let li of list | slice:0:3; let i=index">
+                    <div class="card" style="width: 8rem;" >
+                            <img class="card-img-top" style="width: 20px;height:60px" src={{li.image_url}} >
+                            <div class="card-body">
+                              <h6 class="card-title">{{li.name}}</h6>
+                              
+                           
+                            </div>
+                          </div>      
+            </div>
+
+        </div>
+    </div>
+    
+  </ng-template>
